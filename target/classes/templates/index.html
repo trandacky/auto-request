@@ -1,0 +1,34 @@
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<html xmlns:th="http://www.thymeleaf.org">
+<title>Auto Request</title>
+<meta charset="utf-8">
+<body>
+	<form method="post" action="/" class="card">
+		<input name="domain" id="domain" class="form-control">
+		<button type="submit" class="btn btn-success">Lưu</button>
+	</form>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>STT</th>
+				<th>Domain</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			<tr th:each="domain,iterStat : ${domains}">
+				<td style="width: 10%" class="text-center"
+					th:text="${iterStat.count}"></td>
+				<td><label th:text="${domain.domainUrl}"></label></td>
+				<td><a th:href="@{delete/{id}/(id=${domain.id})}">
+						<button type="submit" class="btn btn-danger">Delete</button>
+				</a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
