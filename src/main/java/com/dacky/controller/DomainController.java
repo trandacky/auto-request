@@ -39,6 +39,7 @@ public class DomainController {
 						try {
 							restTemplate.getForObject(domain.getDomainUrl(), String.class);
 							log.debug("------- request: " + domain.getDomainUrl() + " -------------");
+							System.out.println("sout:------- request: " + domain.getDomainUrl() + " -------------");
 						} catch (Exception e) {
 						}
 
