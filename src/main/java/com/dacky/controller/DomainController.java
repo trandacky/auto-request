@@ -32,7 +32,7 @@ public class DomainController {
 	public void request() {
 		while (true) {
 			try {
-				Thread.sleep(1500000);
+				
 				List<Domain> domains = domainService.getAllDomain();
 				for (int i = 0; i < 3; i++) {
 					for (Domain domain : domains) {
@@ -44,6 +44,7 @@ public class DomainController {
 
 					}
 				}
+				Thread.sleep(1500000);
 			} catch (InterruptedException e) {
 			}
 		}
