@@ -32,16 +32,18 @@ public class DomainController {
 	public void request() {
 		while (true) {
 			try {
-				Thread.sleep(1500000);
+				Thread.sleep(5000);
 				List<Domain> domains = domainService.getAllDomain();
-				for (Domain domain : domains) {
-					try {
-						restTemplate.getForObject(domain.getDomainUrl(), String.class);
-						log.debug("------- request: " + domain.getDomainUrl() + " -------------");
-						System.out.println("------- request: " + domain.getDomainUrl() + " -------------");
-					} catch (Exception e) {
+				for (int i = 0; i < 3; i++) {
+					for (Domain domain : domains) {
+						try {
+							restTemplate.getForObject(domain.getDomainUrl(), String.class);
+							log.debug("------- request: " + domain.getDomainUrl() + " -------------");
+							System.out.println("------- request: " + domain.getDomainUrl() + " -------------");
+						} catch (Exception e) {
+						}
+
 					}
-					
 				}
 			} catch (InterruptedException e) {
 			}

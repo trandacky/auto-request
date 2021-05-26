@@ -7,8 +7,14 @@
 <meta charset="utf-8">
 <body>
 	<form method="post" action="/" class="card">
-		<input name="domain" id="domain" class="form-control">
-		<button type="submit" class="btn btn-success">Lưu</button>
+		<div class="row">
+			<div class="col-md-11">
+				<input name="domain" id="domain" class="form-control">
+			</div>
+			<div class="col-md-1">
+				<button type="submit" class="btn btn-success">Lưu</button>
+			</div>
+		</div>
 	</form>
 	<table class="table table-striped">
 		<thead>
@@ -23,7 +29,8 @@
 			<tr th:each="domain,iterStat : ${domains}">
 				<td style="width: 10%" class="text-center"
 					th:text="${iterStat.count}"></td>
-				<td><label th:text="${domain.domainUrl}"></label></td>
+				<td><a th:href="${domain.domainUrl}"
+					th:text="${domain.domainUrl}"></a></td>
 				<td><a th:href="@{delete/{id}/(id=${domain.id})}">
 						<button type="submit" class="btn btn-danger">Delete</button>
 				</a></td>
